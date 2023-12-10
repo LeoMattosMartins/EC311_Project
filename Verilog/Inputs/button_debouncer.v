@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer: 
+// Engineer: Dominic Murphy
 // 
 // Create Date: 12/09/2023 04:24:50 PM
 // Design Name: 
@@ -21,13 +21,11 @@
 
 
 module button_debouncer(
-    clk, reset, BTN, clean 
+    input clk, //48.8 kHz clock
+    input reset, 
+    input BTN, 
+    output reg clean 
     );
-    
-    input clk; //XXX Hz clock
-    input reset; 
-    input BTN;
-    output reg clean;
     
     //Figure out proper clocking for this device and adjust counterMAXs accordingly
     //Comment using flowChart

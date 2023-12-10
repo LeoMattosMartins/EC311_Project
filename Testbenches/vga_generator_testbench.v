@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: Dominic Murphy
 // 
-// Create Date: 12/09/2023 09:37:53 PM
+// Create Date: 12/10/2023 12:58:04 AM
 // Design Name: 
-// Module Name: clock_divider_testbench
+// Module Name: vga_generator_testbench
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -19,27 +19,23 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
-module clock_divider_testbench(
-
-    );
+module vga_generator_testbench(
+);
     
-    reg boardCLK, reset;
-    wire vgaCLK, gameCLK;
+    reg clk, reset;
+    wire horizontalVGA, verticalVGA;
+    wire [9:0] pixelX;
+    wire [9:0] pixelY;
     
-    clock_divider divide(.boardCLK(boardCLK), .reset(reset), .vgaCLK(vgaCLK), .gameCLK(gameCLK));
+    vga_generator activate(.clk(clk), .reset(reset), .horizontalVGA(horizontalVGA), .verticalVGA(verticalVGA), .pixelX(pixelX), .pixelY(pixelY));
     
-    initial begin
-        boardCLK = 0;
+    initial begin 
+        clk = 0;
         reset = 0;
     end
-    
+
     always begin
-        #1 boardCLK = ~boardCLK;
+        #1 clk = ~clk;
     end
     
-    always begin
-        #200 reset = ~reset;
-    end
-  
 endmodule

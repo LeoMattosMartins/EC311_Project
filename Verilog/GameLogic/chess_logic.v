@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: Dominic Murphy
 // 
-// Create Date: 12/09/2023 04:25:22 PM
+// Create Date: 12/09/2023 11:28:33 PM
 // Design Name: 
-// Module Name: button_debouncer_testbench
+// Module Name: chess_logic
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,26 +20,15 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module button_debouncer_testbench(
-
+module chess_logic(
+    reset, 
+    clk, //25 MHz 
+    redVGA, greenVGA, blueVGA, horizontalVGA, verticalVGA, 
+    BTNC, BTNU, BTND, BTNR, BTNL
     );
     
-    reg clk, BTN, reset;
-    wire clean;
-    
-    button_debouncer debounce(.clk(clk), .reset(reset), .BTN(BTN), .clean(clean));
-    
-    initial begin
-        clk = 0;
-        reset = 0;
-        BTN = 0;
-        forever begin
-            #1 clk = ~clk;
-        end
-    end
-    
-    always begin
-        #20 BTN = ~BTN;
-    end
+    input reset, clk;
+    input BTNU, BTNC, BTND, BTNR, BTNL;
+    output redVGA, greenVGA, blueVGA, horizontalVGA, verticalVGA;
     
 endmodule

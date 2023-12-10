@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer: 
+// Engineer: Dominic Murphy
 // 
 // Create Date: 12/09/2023 09:37:18 PM
 // Design Name: 
@@ -21,14 +21,13 @@
 
 
 module clock_divider(
-    reset,
-    boardCLK, //100MHz
-    vgaCLK, //25MHz
-    gameCLK //48.8 kHz
+    input reset,
+    input boardCLK, //100MHz
+    output vgaCLK, //25MHz
+    output gameCLK //48.8 kHz
     );
     
-    input reset, boardCLK;
-    output vgaCLK, gameCLK;
+    //Comment using the table drawn on ipad
     reg [30:0] theCLKs = 0;
     
     always@(posedge boardCLK, posedge reset) begin
