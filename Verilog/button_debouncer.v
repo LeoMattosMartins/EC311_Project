@@ -21,7 +21,7 @@
 
 
 module button_debouncer(
-    input clk, //24.4 kHz clock
+    input clk, //48.8 kHz clock
     input reset, 
     input BTN, 
     output reg clean 
@@ -58,7 +58,7 @@ module button_debouncer(
                         currentState <= 4'b0000;
                     end else if(counter == counterMAX) begin
                         clean <= 1; 
-                        currentState <= 4'b0010;
+                        currentState <= 4'b0010;               
                     end
                     counter <= counter + 14'b00000000000001;
                 end
@@ -84,7 +84,7 @@ module button_debouncer(
                     end
                     counter <= counter + 14'b00000000000001;
                 end
-                
+               
             endcase             
         end      
     end  
