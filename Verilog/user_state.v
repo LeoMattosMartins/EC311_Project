@@ -37,7 +37,7 @@ module user_state(
     //initialize the state and other reg stuff                                                                                  //TODO
 
     //Board State Variable Declarations
-    reg [5:0] cursorLocation;
+    reg [5:0] cursorLocation = 6'b100110;
     reg [5:0] selectionLocation;                                                                                                //TODO Initialize all these
     reg selectionCheck; //Checks if a selection has been made
     reg playerTurn;
@@ -123,13 +123,13 @@ module user_state(
             
             
             //Check for Cursor Movements every CLK
-            if(BTNU && cursorLocation[5:3] != 3'b000) begin                                   //have hold to midigate the hold time violation or check if cursor matches with VGA
+            if(BTNL && cursorLocation[5:3] != 3'b000) begin                                   //have hold to midigate the hold time violation or check if cursor matches with VGA
                 cursorLocation <= cursorLocation - 6'b00_1000;
-            end else if(BTND && cursorLocation[5:3] != 3'b111) begin                            
+            end else if(BTNR && cursorLocation[5:3] != 3'b111) begin                            
                 cursorLocation <= cursorLocation + 6'b00_1000;
-            end else if(BTNR && cursorLocation[2:0] != 3'b111) begin
+            end else if(BTND && cursorLocation[2:0] != 3'b111) begin
                 cursorLocation <= cursorLocation + 6'b00_0001;
-            end else if(BTNL && cursorLocation[2:0] != 3'b000) begin 
+            end else if(BTNU && cursorLocation[2:0] != 3'b000) begin 
                 cursorLocation <= cursorLocation - 6'b00_0001;
             end
         end    
