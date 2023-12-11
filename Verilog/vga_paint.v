@@ -21,7 +21,7 @@
 
 module vga_paint(
     input wire [255:0] board,
-    input wire clk, //24.4 kHz                                                                              //changed to 25MHz
+    input wire clk, //100MHz
     input wire reset,
     input wire [12:0] moveData,
     output wire [3:0] redVGA, 
@@ -389,4 +389,4 @@ module vga_paint(
     assign greenVGA = currentColor[7:4];
     assign blueVGA = currentColor[3:0];
          
-endmodule  
+endmodule 
