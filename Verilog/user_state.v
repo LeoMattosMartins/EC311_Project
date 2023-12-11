@@ -68,11 +68,15 @@ module user_state(
         if(reset) begin
             currentState <= startGame;       
             //castleState <= writeking;
-            //changeto whites turn
+            //change to whites turn
+            playerTurn <= 1'b0;
             //move cursor to start
+            cursorLocation <= 6'b100110;
             //empty select address
+            
             //enable 0 and other things too. 
-            //how do I do this at the very start of the program
+            selectionCheck <= 1'b0;
+            changePiece <= 11'b00000000000;
         end else begin
         
             case(currentState)
@@ -135,3 +139,4 @@ module user_state(
         end    
   end 
 endmodule
+
