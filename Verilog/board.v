@@ -31,7 +31,7 @@ module board(
     //Define local parameters
     wire allowMove = 1;                                      //TESTING wire allowMove;
     wire [10:0] changePiece;
-    wire [2:0] currentState;
+    //wire [2:0] currentState;                                  //CHANGED
     
     //Run the State Machine
     user_state play(.clk(clk), .reset(reset), .allowMove(allowMove), .entireBoard(board), 
