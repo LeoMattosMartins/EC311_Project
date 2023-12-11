@@ -22,12 +22,12 @@
 
 module clock_divider(
     input reset,
-    input boardCLK, //100MHz
-    output vgaCLK, //25MHz
-    output gameCLK //48.8 kHz
+    input boardCLK, //100 MHz
+    output vgaCLK, //25 MHz
+    output gameCLK //24.4 kHz                                                       //TODO test 48.8 kHz
     );
     
-    //Comment using the table drawn on ipad
+    //Comment using the table drawn on ipad                                         //TODO
     reg [30:0] theCLKs = 0;
     
     always@(posedge boardCLK, posedge reset) begin
@@ -40,7 +40,7 @@ module clock_divider(
          
     end
     
-    assign gameCLK = theCLKs[10];
+    assign gameCLK = theCLKs[11];
     assign vgaCLK = theCLKs[1]; 
     
 endmodule

@@ -21,32 +21,25 @@
 
 
 module top(
-    boardCLK, 
-    redVGA, greenVGA, blueVGA,
-    BTNC, BTNU, BTND, BTNR, BTNL,
-    resetSwitch,
-    horizontalVGA, 
-    verticalVGA
+    input boardCLK, 
+    output [3:0] redVGA, 
+    output [3:0] greenVGA, 
+    output [3:0] blueVGA,
+    input BTNC, BTNU, BTND, BTNR, BTNL,
+    input resetSwitch,
+    output horizontalVGA, 
+    output verticalVGA
     );
    
     //Reset
-    input resetSwitch;
     wire reset;
     assign reset = resetSwitch;
     
     //Clock Management
-    input boardCLK;
     wire vgaCLK, gameCLK;
     clock_divider divide(.boardCLK(boardCLK), .vgaCLK(vgaCLK), .gameCLK(gameCLK), .reset(reset));
-    
-    //VGA Instantiations
-    output wire [3:0] redVGA;
-    output wire [3:0] greenVGA; 
-    output wire [3:0] blueVGA;
-    output wire horizontalVGA, verticalVGA;
-    
+
     //Button Management
-    input BTNC, BTNU, BTND, BTNR, BTNL;
     wire cleanBTNC, cleanBTNU, cleanBTND, cleanBTNR, cleanBTNL;
     button_debouncer debounceUp(.clk(gameCLK), .reset(reset), .BTN(BTNU), .clean(cleanBTNU));
     button_debouncer debounceDown(.clk(gameCLK), .reset(reset), .BTN(BTND), .clean(cleanBTND));
@@ -55,25 +48,23 @@ module top(
     button_debouncer debounceCenter(.clk(gameCLK), .reset(reset), .BTN(BTNC), .clean(cleanBTNC));
     
     //Game Logic
-    chess_logic create(
+    wire [255:0] board;
+    wire [12:0] moveData;
+    
+    board create(                                                                                           //rename to ChessLogic so you can have another one called Checkers logic which you call givena switch
     .reset(reset), 
     .clk(gameCLK),
-    .redVGA(redVGA),
-    .greenVGA(greenVGA),
-    .blueVGA(blueVGA),
-    .horizontalVGA(horizontalVGA),
-    .verticalVGA(verticalVGA),
-    .BTNC(cleanBTNC),
-    .BTNU(cleanBTNU),
-    .BTND(cleanBTND),
-    .BTNR(cleanBTNR),
-    .BTNL(cleanBTNL)
-    //pass the chessboard/its current state somehow to the VGA
-    //pass the cursor position and whether it's on or off somehow to VGA
-    //probably some other stuff too idk yet
-     );
+    .BTNC(cleanBTNC), .BTNU(cleanBTNU), .BTND(cleanBTND), .BTNR(cleanBTNR), .BTNL(cleanBTNL),
+    .board(board), .moveData(moveData)
+    );
     
     //Display on the VGA
-    
-    
+    vga_paint paint(
+    .board(board), 
+    .moveData(moveData),
+    .clk(boardCLK),                                                     //changed vgaCLK
+    .reset(reset), 
+    .greenVGA(greenVGA), .blueVGA(blueVGA), .redVGA(redVGA), .horizontalVGA(horizontalVGA), .verticalVGA(verticalVGA)
+    );
+   
 endmodule

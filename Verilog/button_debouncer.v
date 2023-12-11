@@ -21,20 +21,20 @@
 
 
 module button_debouncer(
-    input clk, //48.8 kHz clock
+    input clk, //24.4 kHz clock
     input reset, 
     input BTN, 
     output reg clean 
     );
     
-    //Figure out proper clocking for this device and adjust counterMAXs accordingly
+    //Figure out proper clocking for this device and adjust counterMAXs accordingly            //TODO
     //Comment using flowChart
     
-    localparam counterMAX = 4'b0101; //5 for the testbench
-    localparam counterMAX2 = 4'b0101; //5 for the testbench
+    localparam counterMAX = 2000; //set to 5 for the testbench--set to 2000 for FPGA
+    localparam counterMAX2 = 2000; //set tp 5 for the testbench--set to 2000 for FPGA            //TODO mark in README
     
     reg[13:0] counter; 
-    reg[3:0] currentState = 0;
+    reg[3:0] currentState = 0;                                                                  //TODO change this name and all other repeat names that arent the same thing
     
     always @(posedge clk, posedge reset)
     begin 

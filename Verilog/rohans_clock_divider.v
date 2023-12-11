@@ -1,11 +1,11 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer: Dominic Murphy
+// Engineer: 
 // 
-// Create Date: 12/09/2023 11:28:33 PM
+// Create Date: 12/11/2023 12:47:55 AM
 // Design Name: 
-// Module Name: chess_logic
+// Module Name: rohans_clock_divider
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,15 +20,22 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module chess_logic(
-    reset, 
-    clk, //25 MHz 
-    redVGA, greenVGA, blueVGA, horizontalVGA, verticalVGA, 
-    BTNC, BTNU, BTND, BTNR, BTNL
+module rohans_clock_divider(
+    input in_clk, 
+    output reg out_clk = 0     //25 MHz
     );
-    
-    input reset, clk;
-    input BTNU, BTNC, BTND, BTNR, BTNL;
-    output redVGA, greenVGA, blueVGA, horizontalVGA, verticalVGA;
-    
+	
+	reg[27:0] count = 28'd0;
+	
+	parameter DIVISOR = 28'd3;
+
+	
+	always @(posedge in_clk)
+	begin
+		count = count + 1;
+		if (count >= DIVISOR-1) begin
+		  count <= 0;
+		  out_clk <= ~out_clk;
+		end
+	end
 endmodule
