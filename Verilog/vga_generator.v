@@ -52,10 +52,10 @@ module vga_generator(
     
     //Increment the columns and rows
     always@(posedge PIXELS) begin                                                                                   //CHANGED
-        //if(reset) begin
-            //pixelX <= 0;
-            //pixelY <= 0;
-        //end
+        if(reset) begin
+            pixelX <= 0;
+            pixelY <= 0;
+        end
         if(pixelX == ENDLINE) begin //end of line
             pixelX <= 0;
             pixelY <= pixelY + 1;
@@ -68,3 +68,4 @@ module vga_generator(
     end
         
 endmodule
+
