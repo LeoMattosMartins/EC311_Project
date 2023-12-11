@@ -129,9 +129,9 @@ module build_board(
         
         
         //If Board Change the Change Board
-        //if(changePiece[10]) begin
-            //board[changePiece[5:0]] <= changePiece[9:6];                     //WRONG bc board is not 64*4
-        //end
+        if(changePiece[10]) begin
+            board[4*changePiece[5:0]+:4] <= changePiece[9:6];                     
+        end
     end
     
     assign boardPass = board;                                                           //TESTING
