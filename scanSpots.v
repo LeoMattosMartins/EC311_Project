@@ -52,6 +52,8 @@ module scanSpots(
         
             UPLEFTLEFT: begin    
                 if(currentPosition%8 >= 2 && currentPosition/8 >= 1) begin
+                    nearestPosition <= (currentPosition 
+                    nearestPiece <= 
                 end    else //Consider what the value of the return address and piece are given nothing. Have a default case in all scenarios and instantiate
             end
             
