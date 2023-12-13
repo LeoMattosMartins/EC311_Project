@@ -52,43 +52,50 @@ module scanSpots(
         
             UPLEFTLEFT: begin    
                 if(currentPosition%8 >= 2 && currentPosition/8 >= 1) begin
-                    nearestPosition <= (currentPosition 
+                    nearestPosition <= (currentPosition - 17);
                     nearestPiece <= 
                 end    else //Consider what the value of the return address and piece are given nothing. Have a default case in all scenarios and instantiate
             end
             
             UPUPLEFT: begin
                 if(currentPosition%8 >= 1 && currentPosition/8 >= 2) begin
+                    nearestPosition <= (currentPosition - 10);
                 end
             end
             
             UPUPRIGHT: begin
                 if((7-(currentPosition%8)) >= 1 && currentPosition/8 >= 2) begin
+                    nearestPosition <= (currentPosition + 6);
                 end
             end
             
             UPRIGHTRIGHT: begin
                 if((7-(currentPosition%8)) >= 2 && currentPosition/8 >= 1) begin
+                    nearestPosition <= (currentPosition + 15);
                 end
             end
 
             RIGHTRIGHTDOWN begin
                 if((7-(currentPosition%8)) >= 2 && (7-(currentPosition/8)) >= 1) begin
+                    nearestPosition <= (currentPosition + 17);
                 end
             end
 
             RIGHTDOWNDOWN begin
                 if((7-(currentPosition%8)) >= 1 && (7-(currentPosition/8)) >= 2) begin
+                    nearestPosition <= (currentPosition + 10);
                 end
             end
 
             LEFTDOWNDOWN begin
                 if(currentPosition%8 >= 1 && (7-(currentPosition/8)) >= 2) begin
+                    nearestPosition <= (currentPosition - 6);
                 end 
             end
 
             LEFTLEFTDOWN begin
                 if(currentPosition%8 >= 2 && (7-(currentPosition/8)) >= 1) begin
+                    nearestPosition <= (currentPosition - 15);
                 end 
             end
             
