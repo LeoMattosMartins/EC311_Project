@@ -26,7 +26,7 @@ module scanDiagonal(
     input [5:0] currentPosition,
     input [1:0] direction, 
     output reg [5:0] nearestPosition, //Location of the closest piece in that direction
-    output reg [2:0] nearestPiece //Type of piece of the closest piece 
+    output reg [3:0] nearestPiece //Type of piece of the closest piece 
     );
     
     //DEFINE DIRECTIONS
@@ -60,7 +60,7 @@ module scanDiagonal(
                 while (i < edgeDistance0 && !found) begin
                     if(board[(currentPosition - (i*6'b001_001))][2:0] != 3'b000) begin
                         nearestPosition <= (currentPosition - (i*6'b001_001));
-                        nearestPiece <= board[(currentPosition - (i*6'b001_001))][2:0];
+                        nearestPiece <= board[(currentPosition - (i*6'b001_001))][3:0];
                         found <= 1;
                     end
                     i = i + 1;
@@ -73,7 +73,7 @@ module scanDiagonal(
                 while (i < edgeDistance1 && !found) begin
                     if(board[(currentPosition + (i*6'b000_111))][2:0] != 3'b000) begin
                         nearestPosition <= (currentPosition + (i*6'b000_111));
-                        nearestPiece <= board[(currentPosition + (i*6'b000_111))][2:0];
+                        nearestPiece <= board[(currentPosition + (i*6'b000_111))][3:0];
                         found <= 1;
                     end
                     i = i + 1;
@@ -86,7 +86,7 @@ module scanDiagonal(
                 while (i < edgeDistance2 && !found) begin
                     if(board[(currentPosition - (i*6'b000_111))][2:0] != 3'b000) begin
                         nearestPosition <= (currentPosition - (i*6'b000_111));
-                        nearestPiece <= board[(currentPosition - (i*6'b000_111))][2:0];
+                        nearestPiece <= board[(currentPosition - (i*6'b000_111))][3:0];
                         found <= 1;
                     end
                     i = i + 1;
@@ -99,7 +99,7 @@ module scanDiagonal(
                 while (i < edgeDistance3 && !found) begin
                     if(board[(currentPosition + (i*6'b001_001))][2:0] != 3'b000) begin
                         nearestPosition <= (currentPosition + (i*6'b001_001));
-                        nearestPiece <= board[(currentPosition + (i*6'b001_001))][2:0];
+                        nearestPiece <= board[(currentPosition + (i*6'b001_001))][3:0];
                         found <= 1;
                     end
                     i = i + 1;
