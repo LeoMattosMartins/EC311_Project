@@ -38,12 +38,6 @@ module scanSpots(
     localparam  RIGHTDOWNDOWN = 3'b101;
     localparam  LEFTDOWNDOWN = 3'b110;
     localparam  LEFTLEFTDOWN = 3'b111;
-   
-    //LOCAL VARIABLES
-    wire edgeDistance0 = (currentPosition/8 > currentPosition%8) ? (currentPosition%8) : (currentPosition/8); 
-    wire edgeDistance1 = ((7-currentPosition/8) > currentPosition%8) ? (currentPosition%8) : (7-currentPosition/8); 
-    wire edgeDistance2 = (currentPosition/8 > (7-currentPosition%8)) ? (7-currentPosition%8) : (currentPosition/8); 
-    wire edgeDistance3 = ((7-currentPosition/8) > (7-currentPosition%8)) ? (7-currentPosition%8) : (7-currentPosition/8); 
     
     //GENERATE 3-D Board
     genvar r;
