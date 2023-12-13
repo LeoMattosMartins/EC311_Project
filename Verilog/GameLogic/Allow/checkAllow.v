@@ -28,11 +28,21 @@
 48 49 50 51 52 53 54 55
 56 57 58 59 60 61 62 63
 
+NEW !!
+00 08 16 24 32 40 48 56
+01 09 17 25 33 41 49 57
+02 10 18 26 34 42 50 58
+03 11 19 27 35 43 51 59
+04 12 20 28 36 44 52 60
+05 13 21 29 37 45 53 61
+06 14 22 30 38 46 54 62 
+07 15 23 31 39 47 55 63 
 */
 
 module checkAllow(
     input  [13:0] moveData,
     input [255:0] boardInput,
+    input clk,
     output wire allowMove
     );  
     
@@ -47,7 +57,7 @@ module checkAllow(
     
     checkColour c3(.currentPiece(currentPiece), .targetPiece(targetPiece), .allowColour(allowColour));
     checkPath c4(.currentPiece(currentPiece), .targetPiece(targetPiece), .allowPath(allowPath));
-    checkDistance c5(.currentPosition(currentPosition), .targetPosition(targetPosition), .currentPiece(currentPiece), .targetPiece(targetPiece), .allowDistance(allowDistance));
+    checkDistance c5(.currentPosition(currentPosition), .targetPosition(targetPosition), .currentPiece(currentPiece), .targetPiece(targetPiece), .allowDistance(allowDistance), .clk(clk));
     
     assign allowMove = (allowColour && allowPath && allowDistance);
     
