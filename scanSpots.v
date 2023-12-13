@@ -57,36 +57,43 @@ module scanSpots(
         case(direction)
         
             UPLEFTLEFT: begin    
-                    if(dist to side >=2)
-                    else //Consider what the value of the return address and piece are given nothing. Have a default case in all scenarios and instantiate
+                if(currentPosition%8 >= 2 && currentPosition/8 >= 1) begin
+                end    else //Consider what the value of the return address and piece are given nothing. Have a default case in all scenarios and instantiate
             end
             
             UPUPLEFT: begin
-
+                if(currentPosition%8 >= 1 && currentPosition/8 >= 2) begin
+                end
             end
             
             UPUPRIGHT: begin
-
+                if((7-(currentPosition%8)) >= 1 && currentPosition/8 >= 2) begin
+                end
             end
             
             UPRIGHTRIGHT: begin
-
+                if((7-(currentPosition%8)) >= 2 && currentPosition/8 >= 1) begin
+                end
             end
 
             RIGHTRIGHTDOWN begin
-
+                if((7-(currentPosition%8)) >= 2 && (7-(currentPosition/8)) >= 1) begin
+                end
             end
 
             RIGHTDOWNDOWN begin
-
+                if((7-(currentPosition%8)) >= 1 && (7-(currentPosition/8)) >= 2) begin
+                end
             end
 
             LEFTDOWNDOWN begin
-
+                if(currentPosition%8 >= 1 && (7-(currentPosition/8)) >= 2) begin
+                end 
             end
 
             LEFTLEFTDOWN begin
-
+                if(currentPosition%8 >= 2 && (7-(currentPosition/8)) >= 1) begin
+                end 
             end
             
             endcase     
