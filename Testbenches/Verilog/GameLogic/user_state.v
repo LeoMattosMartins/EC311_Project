@@ -27,7 +27,7 @@ module user_state(
     input [255:0] entireBoard,
     input BTNC, BTNU, BTND, BTNR, BTNL,
     output reg [10:0] changePiece, //FOR BUILD BOARD bits 0-5->Address, 6-9->Content, 10->Change Boolean 
-    output reg [13:0] moveData,                                                                                                 //TODO change to 12:0
+    output reg [13:0] moveData,                                                                                                
     output reg [2:0] currentState //FOR BUILD BOARD checks if game is in start state 
     );
     
