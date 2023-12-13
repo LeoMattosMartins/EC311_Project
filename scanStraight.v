@@ -57,7 +57,7 @@ module scanStraight(
                         nearestPosition <= (currentPosition - (i*6'b000_001));
                         nearestPiece <= board[(currentPosition - (i*6'b000_001))][2:0];
                         found <= 1;
-                    end
+                    end                                //else make the nearest piece empty so that you can say either no check or no blocking
                     i = i + 1;
                 end
             end
