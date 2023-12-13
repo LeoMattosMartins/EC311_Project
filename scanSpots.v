@@ -30,14 +30,14 @@ module scanSpots(
     );
     
     //DEFINE DIRECTIONS
-    localparam UPLEFTLEFT = 2'b0000;
-    localparam  UPUPLEFT = 2'b0001;
-    localparam  UPUPRIGHT = 2'b0010;
-    localparam  UPRIGHTRIGHT = 2'b0011;
-    localparam  RIGHTRIGHTDOWN = 2'b0100;
-    localparam  RIGHTDOWNDOWN = 2'b0101;
-    localparam  LEFTDOWNDOWN = 2'b0110;
-    localparam  LEFTLEFTDOWN = 2'b0111;
+    localparam UPLEFTLEFT = 3'b000;
+    localparam  UPUPLEFT = 3'b001;
+    localparam  UPUPRIGHT = 3'b010;
+    localparam  UPRIGHTRIGHT = 3'b011;
+    localparam  RIGHTRIGHTDOWN = 3'b100;
+    localparam  RIGHTDOWNDOWN = 3'b101;
+    localparam  LEFTDOWNDOWN = 3'b110;
+    localparam  LEFTLEFTDOWN = 3'b111;
    
     //LOCAL VARIABLES
     wire edgeDistance0 = (currentPosition/8 > currentPosition%8) ? (currentPosition%8) : (currentPosition/8); 
