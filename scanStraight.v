@@ -25,7 +25,7 @@ module scanStraight(
     input [5:0] currentPosition,
     input [1:0] direction, 
     output reg [5:0] nearestPosition, //Location of the closest piece in that direction
-    output reg [2:0] nearestPiece //Type of piece of the closest piece 
+    output reg [3:0] nearestPiece //Type of piece of the closest piece 
     );
     
     //DEFINE DIRECTIONS
@@ -55,7 +55,7 @@ module scanStraight(
                 while (i < currentPosition%8 && !found) begin
                     if(board[(currentPosition - (i*6'b000_001))][2:0] != 3'b000) begin
                         nearestPosition <= (currentPosition - (i*6'b000_001));
-                        nearestPiece <= board[(currentPosition - (i*6'b000_001))][2:0];
+                        nearestPiece <= board[(currentPosition - (i*6'b000_001))][3:0];
                         found <= 1;
                     end                                //else make the nearest piece empty so that you can say either no check or no blocking
                     i = i + 1;
@@ -68,7 +68,7 @@ module scanStraight(
                 while (i < (7-(currentPosition%8)) && !found) begin
                     if(board[(currentPosition + (i*6'b000_001))][2:0] != 3'b000) begin
                         nearestPosition <= (currentPosition + (i*6'b000_001));
-                        nearestPiece <= board[(currentPosition + (i*6'b000_001))][2:0];
+                        nearestPiece <= board[(currentPosition + (i*6'b000_001))][3:0];
                         found <= 1;
                     end
                     i = i + 1;
@@ -81,7 +81,7 @@ module scanStraight(
                 while (i < (7-(currentPosition/8)) && !found) begin
                     if(board[(currentPosition + (i*6'b001_000))][2:0] != 3'b000) begin
                         nearestPosition <= (currentPosition + (i*6'b001_000));
-                        nearestPiece <= board[(currentPosition + (i*6'b001_000))][2:0];
+                        nearestPiece <= board[(currentPosition + (i*6'b001_000))][3:0];
                         found <= 1;
                     end
                     i = i + 1;
@@ -94,7 +94,7 @@ module scanStraight(
                 while (i < currentPosition/8 && !found) begin
                     if(board[(currentPosition - (i*6'b001_000))][2:0] != 3'b000) begin
                         nearestPosition <= (currentPosition - (i*6'b001_000));
-                        nearestPiece <= board[(currentPosition - (i*6'b001_000))][2:0];
+                        nearestPiece <= board[(currentPosition - (i*6'b001_000))][3:0];
                         found <= 1;
                     end
                     i = i + 1;
