@@ -7,7 +7,7 @@ Leonardo Mattos Martins <br>Dominic Murphy <br>Astrid Mihalopoulos <br>Rohan Ale
 Chess using a VGA display and button inputs<br>
 ## How to run your project: !<br>
 ## Overview of the code structure (what code does what): !<br>
-![Alt text](image link)
+![Alt text](ChessFlow.png)
 ## Anything else you feel is relevant: 
 
 ### How to play chess: _Extract from [Chess.com](https://www.chess.com/learn-how-to-play-chess)_
