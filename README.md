@@ -4,7 +4,8 @@
 Leonardo Mattos Martins <br>Dominic Murphy <br>Astrid Mihalopoulos <br>Rohan Alexander <br>
 ## Link to your Project Demo Video: !<br>
 ## Overview of the Project: 
-Chess using a VGA display and button inputs<br>
+We implemented a chess program using custom graphics on a VGA display and button inputs. The program uses patterns in between moves and the basic starting position of the chess board to describe and restrict the movement of every piece without the use of Block RAM or any kind of memory to store these combinations. Each piece has its own custom sprite, and they can even follow the more specialized rules such as promoting a pawn to queen when on the last row of the board, both short and long castling, and en passant. Further logic has also been written to prevent moves which would cause a check to occur, and all other win conditions such as stalemate or checkmate.                           
+<br>
 ## How to run your project: <br>
 Download the Zip File and Extract -> Create a New Project in Vivado 2022.2 -> Open Project Directory -> Program BitStream to Digilent Nexys A7-100T FPGA Trainer Board (Or an FPGA of your choice by editing the constraint file) -> Plug into a VGA -> Find a friend and play!
 ## Overview of the code structure (what code does what): !<br>
