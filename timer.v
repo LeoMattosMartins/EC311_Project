@@ -29,61 +29,99 @@ module timer(
 
     );
     
-    reg [5:0] secBlack = 6'b111011;
+    reg [3:0] sec2Black = 4'b1001;
+    reg [2:0] sec1Black = 3'b011;
     reg [2:0] minBlack = 3'b101;
-    reg [5:0] secWhite = 6'b111011;
+    reg [3:0] sec2White = 4'b1001;
+    reg [2:0] sec1White = 3'b011;
     reg [2:0] minWhite = 3'b101;
     
     
     always@(posedge clk, posedge rst) begin
         if(rst) begin
-            secBlack = 6'b111011;
+            sec2Black = 4'b1001;
+            sec1Black = 3'b011;
             minBlack = 3'b101;
-            secWhite = 6'b111011;
+            sec2White = 4'b1001;
+            sec1White = 3'b011;
             minWhite = 3'b101;
         end
         
         else begin
-            if (moveData[13]) begin
-                if (secBlack <= 60 && minBlack>=0) begin
-                    secBlack = secBlack - 1;
-                    minBlack = minBlack;
-                    secWhite = secWhite;
-                    minWhite = minWhite;                   
+            if (moveData[13] == 0) begin
+                if (sec2White <= 9 && sec1White>=5 && minWhite>=0) begin
+                    sec2Black = 4'b1001;
+                    sec1Black = 3'b011;
+                    minBlack = 3'b101;
+                    sec2White = sec2White - 1;
+                    sec1White = 3'b011;
+                    minWhite = 3'b101;              
                 end
-                else if (secBlack == 0 && minBlack>=0) begin
-                    secBlack = 6'b111011;
-                    minBlack = minBlack - 1;
-                    secWhite = secWhite;
-                    minWhite = minWhite;
+                else if (sec2White == 0 && sec1White>=5 && minWhite>=0) begin
+                    sec2Black = 4'b1001;
+                    sec1Black = 4'b1001;
+                    minBlack = 3'b101;
+                    sec2White = sec2White - 1;
+                    sec1White = 3'b011;
+                    minWhite = 3'b101;
                 end
-            end
-            else if (moveData[13] == 0) begin
-                if (secWhite <= 60 && minWhite>=0) begin
-                    secWhite = secWhite - 1;
-                    minWhite = minWhite;
-                    secBlack = secBlack;
-                    minBlack = minBlack;
-                end
-                else if (secWhite == 0 && minWhite>=0) begin
-                    secWhite = 6'b111011;
+                else if (sec2White == 0 && sec1White == 0 && minWhite>=0) begin
+                    sec2Black = 4'b1001;
+                    sec1Black = 3'b011;
+                    minBlack = 3'b101;
+                    sec2White = 4'b1001;
+                    sec1White = 3'b011;
                     minWhite = minWhite - 1;
-                    secBlack = secBlack;
-                    minBlack = minBlack;
+                end
+                else if (sec2White == 0 && sec1White == 0 && minWhite == 0) begin
+                    sec2Black = 4'b1001;
+                    sec1Black = 3'b011;
+                    minBlack = 3'b101;
+                    sec2White = 4'b1001;
+                    sec1White = 3'b011;
+                    minWhite = 3'b101;
                 end
             end
-            else if ((minBlack == 0 && secBlack == 0) || (minWhite == 0 && secWhite == 0)) begin
-                secBlack = 6'b111011;
-                minBlack = 3'b101;
-                secWhite = 6'b111011;
-                minWhite = 3'b101;
+            else if (moveData[13]) begin
+                if (sec2Black <= 9 && sec1Black>=5 && minBlack>=0) begin
+                    sec2Black = sec2Black - 1;
+                    sec1Black = 3'b011;
+                    minBlack = 3'b101;
+                    sec2White = 4'b1001;
+                    sec1White = 3'b011;
+                    minWhite = 3'b101;              
+                end
+                else if (sec2Black == 0 && sec1Black>=5 && minBlack>=0) begin
+                    sec2Black = 4'b1001;
+                    sec1Black = sec1Black - 1;
+                    minBlack = 3'b101;
+                    sec2White = 4'b1001;
+                    sec1White = 3'b011;
+                    minWhite = 3'b101;
+                end
+                else if (sec2Black == 0 && sec1Black == 0 && minBlack>=0) begin
+                    sec2Black = 4'b1001;
+                    sec1Black = 3'b011;
+                    minBlack = minBlack - 1;
+                    sec2White = 4'b1001;
+                    sec1White = 3'b011;
+                    minWhite = 3'b101;
+                end
+                else if (sec2Black == 0 && sec1Black == 0 && minBlack == 0) begin
+                    sec2Black = 4'b1001;
+                    sec1Black = 3'b011;
+                    minBlack = 3'b101;
+                    sec2White = 4'b1001;
+                    sec1White = 3'b011;
+                    minWhite = 3'b101;
+                end
             end
         
         end
     end
     
-    assign countdownWhite[8:0] = {minWhite, secWhite};
-    assign countdownBlack[8:0] = {minBlack, secBlack};
+    assign countdownWhite = {minWhite, sec1White, sec2White};
+    assign countdownBlack = {minBlack, sec1Black, sec2Black};
     
     
 endmodule
