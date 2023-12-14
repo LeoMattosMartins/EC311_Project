@@ -43,7 +43,7 @@ module user_state(
     reg playerTurn;
     
     //Create package to send to other functions
-    always @* begin
+    always @(posedge clk) begin
         moveData <= {playerTurn, selectionCheck, selectionLocation, cursorLocation};
     end
     
