@@ -23,7 +23,7 @@ module vga_paint(
     input wire [255:0] board,
     input wire clk, //100MHz
     input wire reset,
-    input wire [12:0] moveData,
+    input wire [13:0] moveData,
     output wire [3:0] redVGA, 
     output wire [3:0] blueVGA, 
     output wire [3:0] greenVGA, 
