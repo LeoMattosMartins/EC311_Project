@@ -49,7 +49,7 @@ module timer(
         
         else begin
             if (moveData[13] == 0) begin
-                if (sec2White > 0 && sec1White>0 && minWhite>0) begin
+                if (sec2White>=0 && sec1White>=0 && minWhite>=0) begin
                     sec2Black = sec2Black;
                     sec1Black = sec1Black;
                     minBlack = minBlack;
@@ -57,7 +57,7 @@ module timer(
                     sec1White = sec1White;
                     minWhite = minWhite;              
                 end
-                else if (sec2White == 0 && sec1White>0 && minWhite>0) begin
+                else if (sec2White == 0 && sec1White>=0 && minWhite>=0) begin
                     sec2Black = sec2Black;
                     sec1Black = sec1Black;
                     minBlack = minBlack;
@@ -65,7 +65,7 @@ module timer(
                     sec1White = sec1White - 1;
                     minWhite = minWhite;
                 end
-                else if (sec2White == 0 && sec1White == 0 && minWhite>0) begin
+                else if (sec2White == 0 && sec1White == 0 && minWhite>=0) begin
                     sec2Black = sec2Black;
                     sec1Black = sec1Black;
                     minBlack = minBlack;
@@ -91,7 +91,7 @@ module timer(
                 end
             end
             else if (moveData[13]) begin
-                if (sec2Black >0 && sec1Black>0 && minBlack>0) begin
+                if (sec2Black >=0 && sec1Black>=0 && minBlack>0) begin
                     sec2Black = sec2Black - 1;
                     sec1Black = sec1Black;
                     minBlack = minBlack;
@@ -99,7 +99,7 @@ module timer(
                     sec1White = sec1White;
                     minWhite = minWhite;              
                 end
-                else if (sec2Black == 0 && sec1Black>0 && minBlack>0) begin
+                else if (sec2Black == 0 && sec1Black>=0 && minBlack>=0) begin
                     sec2Black = 4'b1001;
                     sec1Black = sec1Black - 1;
                     minBlack = minBlack;
@@ -107,7 +107,7 @@ module timer(
                     sec1White = sec1White;
                     minWhite = minWhite;
                 end
-                else if (sec2Black == 0 && sec1Black == 0 && minBlack>0) begin
+                else if (sec2Black == 0 && sec1Black == 0 && minBlack>=0) begin
                     sec2Black = 4'b1001;
                     sec1Black = 3'b101;
                     minBlack = minBlack - 1;
