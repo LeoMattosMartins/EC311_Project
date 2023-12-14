@@ -64,12 +64,9 @@ module NumberDisplayDecoder(
     reg [99:0] digit2B;
     reg [99:0] digit3B;
     
-    bin2bcd whitegen(.bin(countdownW[5:0]), .bcd(bcdW));
-    bin2bcd blackgen(.bin(countdownB[5:0]), .bcd(bcdB));
-    
     
     always @ (posedge clk) begin
-        case (countdownW[8:0])
+        case (countdownW[9:7])
             0: begin digit1W = number0; end
             1: begin digit1W = number1; end
             2: begin digit1W = number2; end
@@ -77,7 +74,7 @@ module NumberDisplayDecoder(
             4: begin digit1W = number4; end
             5: begin digit1W = number5; end
         endcase
-        case (bcdW[7:4])
+        case (countdownW[6:4])
             0: begin digit2W = number0; end
             1: begin digit2W = number1; end
             2: begin digit2W = number2; end
@@ -85,7 +82,7 @@ module NumberDisplayDecoder(
             4: begin digit2W = number4; end
             5: begin digit2W = number5; end
         endcase
-        case (bcdW[3:0])
+        case (countdownW[3:0])
             0: begin digit3W = number0; end
             1: begin digit3W = number1; end
             2: begin digit3W = number2; end
@@ -97,7 +94,7 @@ module NumberDisplayDecoder(
             8: begin digit3W = number8; end
             9: begin digit3W = number9; end
         endcase
-        case (countdownB[8:6])
+        case (countdownB[9:7])
             0: begin digit1B = number0; end
             1: begin digit1B = number1; end
             2: begin digit1B = number2; end
@@ -105,7 +102,7 @@ module NumberDisplayDecoder(
             4: begin digit1B = number4; end
             5: begin digit1B = number5; end
         endcase
-        case (bcdB[7:4])
+        case (countdownB[6:4])
             0: begin digit2B = number0; end
             1: begin digit2B = number1; end
             2: begin digit2B = number2; end
@@ -113,7 +110,7 @@ module NumberDisplayDecoder(
             4: begin digit2B = number4; end
             5: begin digit2B = number5; end
         endcase
-        case (bcdB[3:0])
+        case (countdownB[3:0])
             0: begin digit3B = number0; end
             1: begin digit3B = number1; end
             2: begin digit3B = number2; end
