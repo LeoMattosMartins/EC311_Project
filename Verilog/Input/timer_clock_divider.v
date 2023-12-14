@@ -27,7 +27,7 @@ module timer_clock_divider(
     
     reg[27:0] counter = 28'd0;
 	
-	parameter DIVISOR = 28'd100000000;
+	parameter DIVISOR = 28'd50000000;
 
 	
 	always @(posedge CLK100M)
