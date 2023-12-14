@@ -48,7 +48,7 @@ module vga_generator(
     assign verticalVGA = ~((pixelY >= STARTSYNCVERTICAL) & (pixelY < ENDSYNCVERTICAL));
     
     wire PIXELS;
-    rohans_clock_divider(.in_clk(clk), .out_clk(PIXELS));                                                           //CHANGED
+    rohans_clock_divider divider25(.in_clk(clk), .out_clk(PIXELS));                                                           //CHANGED
     
     //Increment the columns and rows
     always@(posedge PIXELS) begin                                                                                   //CHANGED
