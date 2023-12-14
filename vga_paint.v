@@ -298,18 +298,19 @@ module vga_paint(
     
     
     reg [2:0] NumberX;
+    reg [3:0] SquareNumberX;
     wire NumDisplay;
     assign NumDisplay = ((x>=100 && x<150) && (y>=19 && y<31)) ^ ((x>=450 && x<500) && (y>=19 && y<31));
     
     always @ (x) begin
-        if (x<=160 && x>=150) NumberX = 0;
-        else if (x<=170 && x>=160) NumberX = 1;
-        else if (x<=180 && x>=170) NumberX = 2;
-        else if (x<=190 && x>=180) NumberX = 3;
-        else if (x<=460 && x>=450) NumberX = 4;
-        else if (x<=470 && x>=460) NumberX = 5;
-        else if (x<=480 && x>=470) NumberX = 6;
-        else if (x<=490 && x>=480) NumberX = 7;
+        if (x<=115 && x>=105) begin NumberX = 0; SquareNumberX = x-105; end
+        else if (x<=125 && x>=115) begin NumberX = 1; SquareNumberX = x-115; end
+        else if (x<=135 && x>=125) begin NumberX = 2; SquareNumberX = x-125; end
+        else if (x<=145 && x>=135) begin NumberX = 3; SquareNumberX = x-145; end
+        else if (x<=465 && x>=455) begin NumberX = 4; SquareNumberX = x-455; end
+        else if (x<=475 && x>=465) begin NumberX = 5; SquareNumberX = x-465; end
+        else if (x<=485 && x>=475) begin NumberX = 6; SquareNumberX = x-475; end
+        else if (x<=495 && x>=485) begin NumberX = 7; SquareNumberX = x-485; end
     end
     
     wire CLK1;
@@ -337,7 +338,7 @@ module vga_paint(
     wire [99:0] sec2B;
     
     NumberDisplayDecoder timeGen(
-    .clk(PIXELS),
+    .clk(CLK1),
     .countdownW(countdownWhite),
     .countdownB(countdownBlack),
     .minW(minW),
@@ -691,7 +692,7 @@ module vga_paint(
                 for (t=0; t<10; t=t+1) begin
                             TextSquare[t] = minW[t*10 +: 10];
                             end
-                        if (TextSquare[LetterX][LetterY])
+                        if (TextSquare[SquareNumberX][LetterY])
                             currentColor = WHITEPIECECOLOR;
                         else
                             currentColor = BLACKPIECECOLOR;
@@ -700,7 +701,7 @@ module vga_paint(
                 for (t=0; t<10; t=t+1) begin
                             TextSquare[t] = colon[t*10 +: 10];
                             end
-                        if (TextSquare[LetterX][LetterY])
+                        if (TextSquare[SquareNumberX][LetterY])
                             currentColor = WHITEPIECECOLOR;
                         else
                             currentColor = BLACKPIECECOLOR;
@@ -710,7 +711,7 @@ module vga_paint(
                 for (t=0; t<10; t=t+1) begin
                             TextSquare[t] = sec1W[t*10 +: 10];
                             end
-                        if (TextSquare[LetterX][LetterY])
+                        if (TextSquare[SquareNumberX][LetterY])
                             currentColor = WHITEPIECECOLOR;
                         else
                             currentColor = BLACKPIECECOLOR;
@@ -719,7 +720,7 @@ module vga_paint(
                 for (t=0; t<10; t=t+1) begin
                             TextSquare[t] = sec2W[t*10 +: 10];
                             end
-                        if (TextSquare[LetterX][LetterY])
+                        if (TextSquare[SquareNumberX][LetterY])
                             currentColor = WHITEPIECECOLOR;
                         else
                             currentColor = BLACKPIECECOLOR;
@@ -728,7 +729,7 @@ module vga_paint(
                 for (t=0; t<10; t=t+1) begin
                             TextSquare[t] = minB[t*10 +: 10];
                             end
-                        if (TextSquare[LetterX][LetterY])
+                        if (TextSquare[SquareNumberX][LetterY])
                             currentColor = WHITEPIECECOLOR;
                         else
                             currentColor = BLACKPIECECOLOR;
@@ -737,7 +738,7 @@ module vga_paint(
                 for (t=0; t<10; t=t+1) begin
                             TextSquare[t] = colon[t*10 +: 10];
                             end
-                        if (TextSquare[LetterX][LetterY])
+                        if (TextSquare[SquareNumberX][LetterY])
                             currentColor = WHITEPIECECOLOR;
                         else
                             currentColor = BLACKPIECECOLOR;
@@ -747,7 +748,7 @@ module vga_paint(
                 for (t=0; t<10; t=t+1) begin
                             TextSquare[t] = sec1B[t*10 +: 10];
                             end
-                        if (TextSquare[LetterX][LetterY])
+                        if (TextSquare[SquareNumberX][LetterY])
                             currentColor = WHITEPIECECOLOR;
                         else
                             currentColor = BLACKPIECECOLOR;
@@ -756,7 +757,7 @@ module vga_paint(
                 for (t=0; t<10; t=t+1) begin
                             TextSquare[t] = sec2B[t*10 +: 10];
                             end
-                        if (TextSquare[LetterX][LetterY])
+                        if (TextSquare[SquareNumberX][LetterY])
                             currentColor = WHITEPIECECOLOR;
                         else
                             currentColor = BLACKPIECECOLOR;
