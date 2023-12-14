@@ -11,7 +11,6 @@ Download the Zip File and Extract -> Create a New Project in Vivado 2022.2 -> Op
 ## Overview of the code structure (what code does what): <br>
 ![Alt text](ChessFlow.png)
 ## Anything else you feel is relevant: 
-<br>
 ###checkDistance debugging visualization:
 ![Alt text](checkDistance_Debugger.jpeg)
 ### How to play chess: _Extract from [Chess.com](https://www.chess.com/learn-how-to-play-chess)_
