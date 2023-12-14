@@ -11,7 +11,7 @@ Download the Zip File and Extract -> Create a New Project in Vivado 2022.2 -> Op
 ## Overview of the code structure (what code does what): <br>
 ![Alt text](ChessFlow.png)
 ## Anything else you feel is relevant: 
-###checkDistance debugging visualization:
+### checkDistance debugging visualization:
 ![Alt text](checkDistance_Debugger.jpeg)
 ### How to play chess: _Extract from [Chess.com](https://www.chess.com/learn-how-to-play-chess)_
 At the beginning of the game the chessboard is laid out so that each player has the white (or light) color square in the bottom right-hand side.<br><br>
