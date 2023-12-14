@@ -5,7 +5,8 @@ Leonardo Mattos Martins <br>Dominic Murphy <br>Astrid Mihalopoulos <br>Rohan Ale
 ## Link to your Project Demo Video: !<br>
 ## Overview of the Project: 
 Chess using a VGA display and button inputs<br>
-## How to run your project: !<br>
+## How to run your project: <br>
+Download the Zip File and Extract -> Create a New Project in Vivado 2022.2 -> Open Project Directory -> Program BitStream to Digilent Nexys A7-100T FPGA Trainer Board (Or an FPGA of your choice by editing the constraint file) -> Plug into a VGA -> Find a friend and play!
 ## Overview of the code structure (what code does what): !<br>
 ![Alt text](ChessFlow.png)
 ## Anything else you feel is relevant: 
