@@ -33,6 +33,7 @@
 module checkAllow(
     input  [13:0] moveData,
     input [255:0] boardInput,
+    input clk,
     output wire allowMove
     );  
     
@@ -47,7 +48,7 @@ module checkAllow(
     
     checkColour c3(.currentPiece(currentPiece), .targetPiece(targetPiece), .allowColour(allowColour));
     checkPath c4(.currentPiece(currentPiece), .targetPiece(targetPiece), .allowPath(allowPath));
-    checkDistance c5(.currentPosition(currentPosition), .targetPosition(targetPosition), .currentPiece(currentPiece), .targetPiece(targetPiece), .allowDistance(allowDistance));
+    checkDistance c5(.clk(clk), .currentPosition(currentPosition), .targetPosition(targetPosition), .currentPiece(currentPiece), .targetPiece(targetPiece), .allowDistance(allowDistance));
     
     assign allowMove = (allowColour && allowPath && allowDistance);
     
