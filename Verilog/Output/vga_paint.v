@@ -306,7 +306,7 @@ module vga_paint(
         if (x<=115 && x>=105) begin NumberX = 0; SquareNumberX = x-105; end
         else if (x<=125 && x>=115) begin NumberX = 1; SquareNumberX = x-115; end
         else if (x<=135 && x>=125) begin NumberX = 2; SquareNumberX = x-125; end
-        else if (x<=145 && x>=135) begin NumberX = 3; SquareNumberX = x-145; end
+        else if (x<=145 && x>=135) begin NumberX = 3; SquareNumberX = x-135; end
         else if (x<=465 && x>=455) begin NumberX = 4; SquareNumberX = x-455; end
         else if (x<=475 && x>=465) begin NumberX = 5; SquareNumberX = x-465; end
         else if (x<=485 && x>=475) begin NumberX = 6; SquareNumberX = x-475; end
